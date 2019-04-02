@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <ctype.h>//isspace
 
 using namespace std;
 
@@ -37,15 +38,35 @@ void split(string str)
 
 int main(){
 
-	string s, aux;
-  ifstream arq ("padrao.txt");
-  if(arq.is_open()){
-    while(!arq.eof()){
-      getline(arq,s);
-      split(s);  
+	string s, aux = "";
+  //ifstream arq ("padrao.txt");
+  char t;
+  FILE * arq;
+  arq = fopen("padrao.txt", "r");
+  //if(arq.is_open()){
+    while((t = fgetc(arq)) != EOF){
+      // getline(arq,s);
+      // split(s);
+      if(isspace(t)){
+        if(!verificaTokenExistente(aux)){
+          if(aux != ""){
+            tokens.push_back(aux); 
+          }
+        } 
+        aux = ""; 
+      }
+      else{
+        aux += t;
+      }
     }
-    arq.close();
-  }
+    if(!verificaTokenExistente(aux)){
+      if(aux != ""){
+        tokens.push_back(aux); 
+      }
+    }
+    fclose(arq);
+   // arq.close();
+  //}
 	
 	// for(int i=0;i<tokens.size();i++){
 	// 	cout << tokens[i] << " ";
@@ -54,7 +75,7 @@ int main(){
 
   ofstream out;
   out.open("tokens.txt");
-  out << "TOKENS\n";
+  out << "TOKENS:\n\n";
   for(int i=0;i<tokens.size();i++){
     out << tokens[i] << "\n";
   }
