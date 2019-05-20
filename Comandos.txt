@@ -1,0 +1,2 @@
+	time a.out < enter.code > compiled.cpp
+	g++ compiled.cpp -o compiled.exe
