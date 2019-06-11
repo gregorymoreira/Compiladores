@@ -22,9 +22,9 @@
 alpha                               [a-z]([a-zA-Z_]|[0-9])*
 whitespace 	                        [ \r\t\v\f ]
 float                               [0-9]*,[0-9]+|[0-9]+,[0-9]*
-int                                 [0-9]+      
+int                                 [0-9]+
+charliteral                         [\x27][0-9|a-zA-Z|\n|\t| |:|(|)|,][\x27]
 linefeed                            \n
-multilinecoment                     [**](.)*
 
 
 %%
@@ -34,6 +34,7 @@ multilinecoment                     [**](.)*
 <COMMENTS>\n                        ++yylineno;
 <COMMENTS><<EOF>>                   { cout << "EOF no comentario!" << endl; exit(0); }
 <COMMENTS>"<<"                      BEGIN(INITIAL);
+"**"(.)*                            { ; }  
 "<"                                 { n_tokens++; aux.tok = "OP_MENOR"; aux.lexema = yytext; 
                                         aux.linha = yylineno; simbTable.push_back(aux); 
                                         return OP_MENOR; }
@@ -145,8 +146,14 @@ multilinecoment                     [**](.)*
 				                              strncpy(yylval.sval, yytext, strlen(yytext)); aux.tok = "VALUE_FLOAT"; aux.lexema = yytext; 
                                         aux.linha = yylineno; simbTable.push_back(aux); 
                                         return VALUE_FLOAT; }
+
 {whitespace}
-{multilinecoment}                   { ; }    
+
+{charliteral}                       { n_tokens++; 
+                                      yylval.sval = strdup(yytext);
+				                              strncpy(yylval.sval, yytext, strlen(yytext)); aux.tok = "VALUE_CHAR"; aux.lexema = yytext; 
+                                        aux.linha = yylineno; simbTable.push_back(aux); 
+                                        return VALUE_CHAR; }  
 {linefeed}	                        ++yylineno;
 .                                   { yyerror("Erro lexico encontrado",yytext);}
 

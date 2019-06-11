@@ -1,18 +1,20 @@
-proc main ()
+proc main()
 {
-    var n , nRebuilt - int ;
+    var n , nRebuilt - int;
 
-    n := 51423 ; ** numero a ser testado
+    n := 51423; ** numero a ser testado
 
     >> A divisao de inteiros arredondada para baixo (em caso 
     de divisao inexata). Assim, numeros impares ficarao
     com uma unidade a menos do que seu valor inicial. <<
 
-    nRebuilt := ( n / 2 ) * 2 ;
+    nRebuilt := (n / 2)*2;
 
-    if ( n = nRebuilt )
-        prtn('P', 'A', 'R') ;
+    var 123abc;
+    
+    if(n = nRebuilt)
+        prtn('P', 'A', 'R');
     else
-        prtn('I', 'M', 'P', 'A', 'R') ;
+        prtn('I', 'M', 'P', 'A', 'R');
 
 }

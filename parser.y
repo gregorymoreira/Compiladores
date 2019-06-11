@@ -13,7 +13,7 @@
     char *sval;
 };
 
-%token <sval> IDENTIFICADOR VALUE_INT VALUE_FLOAT
+%token <sval> IDENTIFICADOR VALUE_INT VALUE_FLOAT VALUE_CHAR
 %token OP_MAIOR OP_MENOR OP_MENOR_IGUAL OP_MAIOR_IGUAL OP_IGUAL OP_DIFERENTE
 %token OP_SOMA OP_SUB OP_MULT OP_DIV OP_MOD OP_AND OP_OR OP_NOT
 %token ATRIBUICAO
@@ -24,7 +24,7 @@
 %left OP_OR OP_AND
 %left OP_SOMA OP_SUB
 %left OP_MULT OP_DIV OP_MOD
-%left OP_DIFERENTE OP_MAIOR_IGUAL OP_MENOR_IGUAL OP_MENOR OP_IGUAL
+%left OP_DIFERENTE OP_MAIOR_IGUAL OP_MENOR_IGUAL OP_MENOR OP_IGUAL SIMB_ABRE_PARENTESES
 %left OP_NOT
 
 %start programa
@@ -136,7 +136,8 @@ expr_basica:
         | OP_NOT expr_basica
         | OP_SUB expr_basica
         | VALUE_INT                                       
-        | VALUE_FLOAT                                       
+        | VALUE_FLOAT
+        | VALUE_CHAR                                       
         | IDENTIFICADOR                                     
         | chamada_func
         ;

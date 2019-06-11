@@ -9,4 +9,6 @@ proc main()
     prtn(result);
 
     **var 14bbc - int;
+    if(teste = teste2)
+        prtn('v');
 }
