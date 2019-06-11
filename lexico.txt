@@ -1,0 +1,43 @@
+{alpha}                             { cout << yytext << endl; return IDENTIFICADOR; } 
+{int}                               { cout << yytext << endl; return VALUE_INT; }
+{float}                             { cout << yytext << endl; return VALUE_FLOAT; }
+{whitespace}
+"<"                                 { cout << yytext << endl; return OP_MENOR; }
+">"                                 { cout << yytext << endl; return OP_MAIOR; }
+"<="                                { cout << yytext << endl; return OP_MENOR_IGUAL; }
+">="                                { cout << yytext << endl; return OP_MAIOR_IGUAL; }
+"="                                 { cout << yytext << endl; return OP_IGUAL; }
+"<>"                                { cout << yytext << endl; return OP_DIFERENTE; }
+"+"                                 { cout << yytext << endl; return OP_SOMA; }
+"-"                                 { cout << yytext << endl; return OP_SUB; }
+"*"                                 { cout << yytext << endl; return OP_MULT; }
+"/"                                 { cout << yytext << endl; return OP_DIV; }
+"%"                                 { cout << yytext << endl; return OP_MOD; }
+"and"                               { cout << yytext << endl; return OP_AND; }
+"or"                                { cout << yytext << endl; return OP_OR; }
+"not"                               { cout << yytext << endl; return OP_NOT; }
+":="                                { cout << yytext << endl; return ATRIBUICAO; }
+")"                                 { cout << yytext << endl; return SIMB_PD; }
+"("                                 { cout << yytext << endl; return SIMB_PE; }
+","                                 { cout << yytext << endl; return SIMB_VIRGULA; }
+";"                                 { cout << yytext << endl; return SIMB_PONTO_VIRGULA; }
+"{"                                 { cout << yytext << endl; return SIMB_CE; }
+"}"                                 { cout << yytext << endl; return SIMB_CD; }
+"if"                                { cout << yytext << endl; return KEYWORD_IF; }
+"else"                              { cout << yytext << endl; return KEYWORD_ELSE; }
+"while"                             { cout << yytext << endl; return KEYWORD_WHILE; }
+"return"                            { cout << yytext << endl; return KEYWORD_RETURN; }
+"float"                             { cout << yytext << endl; return KEYWORD_FLOAT; }
+"char"                              { cout << yytext << endl; return KEYWORD_CHAR; }
+"void"                              { cout << yytext << endl; return KEYWORD_VOID; }
+"prnt"                              { cout << yytext << endl; return KEYWORD_PRNT; }
+"int"                               { cout << yytext << endl; return KEYWORD_INT; }
+"proc"                              { cout << yytext << endl; return KEYWORD_PROC; }
+"var"                               { cout << yytext << endl; return KEYWORD_VAR; }
+{linefeed}	                        ++yylineno;
+.                                   ;
+
+https://stackoverflow.com/questions/28211952/y-tab-c-undefined-reference-to-yylex
+
+https://bitbucket.org/schnorr/calc/src/master/calc.y
+

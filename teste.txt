@@ -1,0 +1,12 @@
+var n, soma - int;
+
+proc main()
+{
+    var result - int;
+
+    result := 1212;
+
+    prtn(result);
+
+    **var 14bbc - int;
+}
